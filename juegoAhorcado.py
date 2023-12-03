@@ -186,3 +186,9 @@ def TableroFinal():
     DiseñoAhorcado()
     if len(letrasIncorrectas) < 6:
         print(*casillas)
+
+#-------------------------------------------------------------------------
+palabra = PalabraAlAzar(diccionario)
+#La lista casillas van a ser tantos guiones como la cantidad de letras de la palabra
+casillas = [ " _" ]*len(palabra)
+letrasIncorrectas = []
