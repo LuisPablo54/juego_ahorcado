@@ -163,3 +163,10 @@ def comprobar():
         else:
             print("\n \n \n \n Esa letra no era, intentalo de nuevo :(\n")
             letras_incorrectas.append(letra)
+#Comprobamos si la letra esta en la palabra para sutituirla por el guion =>
+# si el elemento de la lista de la palabra con indice "i" es igual a la letra del usuario, 
+# entonces en la lista "casillas" va a ser remplazado por la letra del usuario.
+def actualizar_casillas():
+    for i in range(len(palabra)):
+        if palabra[i] == letra:
+            casillas[i] = letra
