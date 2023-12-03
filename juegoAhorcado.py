@@ -117,23 +117,23 @@ while nuevojuego == True:
 
 #Esta funcion con la ayuda de la libreria random, y el randint toma un valor entre 0 y la longitud
 # de la lista diccionario -1 para despues regresar la palabra sacandola por el valor obtenido de la lista
-def Palabra_al_Azar(diccionario):
+def PalabraAlAzar(diccionario):
     palabraOculta = rdn.randint(0, len(diccionario) - 1)
     return diccionario[palabraOculta]
 #La funcion actualiza que numero en la lista de dibujos va a llamar depende de cuantos erorres lleve el usuario
-def Diseño_ahorcado():
-    print(dibujos[len(letras_incorrectas)],"\n")
+def DiseñoAhorcado():
+    print(dibujos[len(letrasIncorrectas)],"\n")
 
 #-------------------------------------------------------------------------
 
 #Llama a la funcion previa para que saber si aun tienes intentos, imprime la lista casillas y
 # las letras incorrectas que llevas, con el asterisco se desglosan los elementos de la lista, asi mostrandolos
 def Tablero():
-    Diseño_ahorcado()
-    if len(letras_incorrectas) < 6:
+    DiseñoAhorcado()
+    if len(letrasIncorrectas) < 6:
         print(*casillas)
-        print("\n Letras incorrectas que llevas: ", *letras_incorrectas)
-def Letra_Valida():
+        print("\n Letras incorrectas que llevas: ", *letrasIncorrectas)
+def LetraValida():
     if letra in "abcdefghijklmnñopqrstuvxyzw" and len(letra) == 1:
         return True
     elif len(letra) > 1:
@@ -143,8 +143,8 @@ def Letra_Valida():
         print("\n \n \n \n Solamente se aceptan letras del abedecario, Prueba otra vez")
         return False
 #Esta funcion es para ver si la letra ingrsada ya fue ingresada previamente
-def Letra_Repetida():
-    if letra in letras_incorrectas:
+def LetraRepetida():
+    if letra in letrasIncorrectas:
         print("\n \n \n Ya te equivocaste con esa letra")
         return True
     elif letra in casillas:
@@ -154,19 +154,19 @@ def Letra_Repetida():
         return False
 #Checa si descubirste una letra, y si no que la anexe a la lista de letras incorrectas,
 #pero si era la ultima letra por descubir y la acertaste, imprime que fue la ultima.
-def comprobar():
-    if len(letras_incorrectas) < 6:
+def Comprobar():
+    if len(letrasIncorrectas) < 6:
         if letra in palabra:
             print("\n \n \n \n Perfecto le atinaste a una!\n")
         elif Victoria() == True:
             print("\n \n \n \n Perfecto, le atinaste a la ultima")
         else:
             print("\n \n \n \n Esa letra no era, intentalo de nuevo :(\n")
-            letras_incorrectas.append(letra)
+            letrasIncorrectas.append(letra)
 #Comprobamos si la letra esta en la palabra para sutituirla por el guion =>
 # si el elemento de la lista de la palabra con indice "i" es igual a la letra del usuario, 
 # entonces en la lista "casillas" va a ser remplazado por la letra del usuario.
-def actualizar_casillas():
+def ActualizarCasillas():
     for i in range(len(palabra)):
         if palabra[i] == letra:
             casillas[i] = letra
@@ -178,6 +178,6 @@ def Victoria():
         return True
 #Si la lista de letras incorrectas alcanza 6 elementos en ella, quiere decir que perdiste
 def Perder():
-    if len(letras_incorrectas) == 6:
+    if len(letrasIncorrectas) == 6:
         print("F en el chat ¡Lo siento", nombre,"! ¡Has perdido! la palabra a adivinar era: " ,palabra)
         return True
