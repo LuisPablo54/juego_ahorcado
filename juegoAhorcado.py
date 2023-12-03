@@ -153,3 +153,14 @@ def Letra_Repetida():
         return True
     else:
         return False
+#4: Checa si descubirste una letra, y si no que la anexe a la lista de letras incorrectas,
+#  pero si era la ultima letra por descubir y si le atinaste, entonces que ya te ponga que fue la ultima.
+def comprobar():
+    if len(letras_incorrectas) < 6:
+        if letra in palabra:
+            print("\n \n \n \n Perfecto le atinaste a una!\n")
+        elif Victoria() == True:
+            print("\n \n \n \n Perfecto, le atinaste a la ultima")
+        else:
+            print("\n \n \n \n Esa letra no era, intentalo de nuevo :(\n")
+            letras_incorrectas.append(letra)
