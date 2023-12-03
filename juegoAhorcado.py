@@ -12,7 +12,7 @@ import random as rdn
 
 #Banco de palabras
 
-Facil = ["amarillo","verde","rojo","violeta","turquesa","marron","naranja","aguamarina","dorado","blanco",]
+Facil = ["amarillo","verde","rojo","violeta","turquesa","marron","naranja","aguamarina","dorado","blanco"]
 
 Intermedio = ["turquia","suecia","argentina","ucrania","brasil","canada","dinamarca","francia","polonia"]
 
@@ -181,3 +181,8 @@ def Perder():
     if len(letrasIncorrectas) == 6:
         print("F en el chat ¡Lo siento", nombre,"! ¡Has perdido! la palabra a adivinar era: " ,palabra)
         return True
+#Ingresamos esta funcion para usarla en el bucle del juego para que, cuando pierdas no se cierre tan abruptamente el programa.
+def TableroFinal():
+    DiseñoAhorcado()
+    if len(letrasIncorrectas) < 6:
+        print(*casillas)
