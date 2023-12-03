@@ -84,7 +84,7 @@ dibujos = ['''
 nombre = str(input("Nombre del jugador: "))
 print(f"\nPerfecto {nombre}, empezando el juego de ahorcado: \n")
 
-#Primero vamos a elegir con que plabara vamos a trabajar, para eso nos basamos en las preferencias del usuario
+#Primero vamos a elegir con que palabara vamos a trabajar, para eso nos basamos en las preferencias del usuario
 #Lo de nuevo juego true y flase, solo es para lograr hacer un bucle, por si el usuario
 #no elige una opcion existente le vuelva a preguntar hasta que eliga una que si existe
 nuevojuego = True
@@ -120,14 +120,13 @@ while nuevojuego == True:
 def Palabra_al_Azar(diccionario):
     palabraOculta = rdn.randint(0, len(diccionario) - 1)
     return diccionario[palabraOculta]
-#Aqui somplemente la funcion actualiza que numero en la lista de dibujos va a llmar depende
-# de cuantos erorres lleve el usuario, al inicio lleva 0 por lo que imprime el primer elemento
+#La funcion actualiza que numero en la lista de dibujos va a llamar depende de cuantos erorres lleve el usuario
 def Diseño_ahorcado():
     print(dibujos[len(letras_incorrectas)],"\n")
 
 #-------------------------------------------------------------------------
 
-#1: llama a la funcion previa para que saber si aun tienes intentos, imprimir la lista casillas y
+#Llama a la funcion previa para que saber si aun tienes intentos, imprime la lista casillas y
 # las letras incorrectas que llevas, con el asterisco se desglosan los elementos de la lista, asi mostrandolos
 def Tablero():
     Diseño_ahorcado()
@@ -143,7 +142,7 @@ def Letra_Valida():
     elif letra not in "abcdefghijklmnñopqrstuvxyzw":
         print("\n \n \n \n Solamente se aceptan letras del abedecario, Prueba otra vez")
         return False
-#3: Esta funcion es para ver si la letra ingrsada ya fue ingresada previamente
+#Esta funcion es para ver si la letra ingrsada ya fue ingresada previamente
 def Letra_Repetida():
     if letra in letras_incorrectas:
         print("\n \n \n Ya te equivocaste con esa letra")
@@ -153,8 +152,8 @@ def Letra_Repetida():
         return True
     else:
         return False
-#4: Checa si descubirste una letra, y si no que la anexe a la lista de letras incorrectas,
-#  pero si era la ultima letra por descubir y si le atinaste, entonces que ya te ponga que fue la ultima.
+#Checa si descubirste una letra, y si no que la anexe a la lista de letras incorrectas,
+#pero si era la ultima letra por descubir y la acertaste, imprime que fue la ultima.
 def comprobar():
     if len(letras_incorrectas) < 6:
         if letra in palabra:
