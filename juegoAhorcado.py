@@ -134,3 +134,22 @@ def Tablero():
     if len(letras_incorrectas) < 6:
         print(*casillas)
         print("\n Letras incorrectas que llevas: ", *letras_incorrectas)
+def Letra_Valida():
+    if letra in "abcdefghijklmnñopqrstuvxyzw" and len(letra) == 1:
+        return True
+    elif len(letra) > 1:
+        print("\n \n \n \n ingresa solo una letra a la vez")
+        return False
+    elif letra not in "abcdefghijklmnñopqrstuvxyzw":
+        print("\n \n \n \n Solamente se aceptan letras del abedecario, Prueba otra vez")
+        return False
+#3: Esta funcion es para ver si la letra ingrsada ya fue ingresada previamente
+def Letra_Repetida():
+    if letra in letras_incorrectas:
+        print("\n \n \n Ya te equivocaste con esa letra")
+        return True
+    elif letra in casillas:
+        print("\n \n \n Ya atinaste esa letra")   
+        return True
+    else:
+        return False
