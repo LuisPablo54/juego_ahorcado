@@ -170,3 +170,14 @@ def actualizar_casillas():
     for i in range(len(palabra)):
         if palabra[i] == letra:
             casillas[i] = letra
+#Comprueba si ya no quedan guiones bajos en la lista casillas porque ya todos fueron cambiados por letras
+def Victoria():
+    if " _" not in casillas:
+        print("Felicidades ", nombre,"!!! Descubriste la palabra por completo, que listo que sos")
+        print("La palabra era", palabra)
+        return True
+#Si la lista de letras incorrectas alcanza 6 elementos en ella, quiere decir que perdiste
+def Perder():
+    if len(letras_incorrectas) == 6:
+        print("F en el chat ¡Lo siento", nombre,"! ¡Has perdido! la palabra a adivinar era: " ,palabra)
+        return True
