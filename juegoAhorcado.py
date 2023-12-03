@@ -192,3 +192,36 @@ palabra = PalabraAlAzar(diccionario)
 #La lista casillas van a ser tantos guiones como la cantidad de letras de la palabra
 casillas = [ " _" ]*len(palabra)
 letrasIncorrectas = []
+
+confirmacion = True
+while confirmacion == True:
+    
+    #Llamamos la funcion #1, para que imprima el dibujo del ahorcado con indice 0 (el primero seria)
+    Tablero()
+    #Le pedimos al usuario que iongrese una letra, la pasamos a minusculas y le quitamos los espacios.
+    letra = input("\nAhora ¿Con cual letra quiere probar su suerte?  ")
+    letra = letra.lower()
+    letra = letra.strip()
+    print("-------------------------------------------------------------------------------------------------------")
+    #Ahora si con la funcion #2 vemos si el usuario solo ingreso una letra y no simbolos, dos letras, etc.
+    #Pero tambien vemos si la letra no esta repetida, cuando se cumplen las dos condiciones se ejecuta el bloque
+    if LetraValida() == True and LetraRepetida() == False:
+        Comprobar()
+        ActualizarCasillas()
+        if Victoria() == True:
+            TableroFinal()
+            input(":D\n \nPresiona enter para terminar. ")
+            confirmacion = False
+        if Perder() == True:
+            Tablero()
+            input("D:\n \nPresiona enter para terminar. ")
+            confirmacion = False
+                
+    #Si en el "if" no se fue por ninguna quiere decir que sigue jugando asi que, le ponemos que lo intente otra vez
+    # y con el "continue" el bloque principal se volveria a ejecutar, pidiendo una letra, comprobando, etc.
+    else:
+        print("intentalo de nuevo ", nombre)
+        confirmacion = True
+        continue
+    
+#---------------------------------------------------------------------------
