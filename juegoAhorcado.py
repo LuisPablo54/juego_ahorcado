@@ -10,16 +10,6 @@
 import random as rdn
 
 
-#Banco de palabras
-
-Facil = ["amarillo","verde","rojo","violeta","turquesa","marron","naranja","aguamarina","dorado","blanco"]
-
-Intermedio = ["turquia","suecia","argentina","ucrania","brasil","canada","dinamarca","francia","polonia"]
-
-Dificil = ["hortensia","azalea","pensamiento","orquidea","margarita","hibisco","bugambilia","lavanda","dalia","azucena"]
-
-
-
 #Dibujo del ahorcado: una lista con 7 elementos que basicamente son dibujos echos con simbolos
 dibujos = ['''
      +----¬
@@ -100,26 +90,30 @@ while nuevojuego == True:
     #aqui ya inician las deciciones, depende de la dificultat que desee el usuario
     if dificultad == "dificil":
         print("\nBuscas reto?, p\n")    
-        diccionario = Intermedio
+        with open("C:/Users/Personal Computer/OneDrive/Documentos/BancoDePalabrasDificil.txt","r") as archivo:
+            lineas = archivo.readlines()
+            palabras = [palabra.strip() for linea in lineas for palabra in linea.split()]
+            palabraAleatoria = rdn.choice(palabras).strip()
 
     elif dificultad == "intermedio":
         print("\nBuena opcion, siempre en equilibrio \n")
-        diccionario = Intermedio
+        with open("C:/Users/Personal Computer/OneDrive/Documentos/BancoDePalabrasIntermedio.txt","r") as archivo:
+            lineas = archivo.readlines()
+            palabras = [palabra.strip() for linea in lineas for palabra in linea.split()]
+            palabraAleatoria = rdn.choice(palabras).strip()
          
     elif dificultad == "facil":
         print("\nVienes a relajarte, perfercto \n")
-        diccionario = Facil
+        with open("C:/Users/Personal Computer/OneDrive/Documentos/BancoDePalabrasFacil.txt","r") as archivo:
+            lineas = archivo.readlines()
+            palabras = [palabra.strip() for linea in lineas for palabra in linea.split()]
+            palabraAleatoria = rdn.choice(palabras).strip()
     #Si el usuario elige una categoria inexistente que "nuevojuego" valga otra vez true y con el "continue" se vuelva a ejecutar desde el primer bucle
     else:
         print("\n La opcion seleccionada no esta disponible, de favor corrige tu escritura \n")
         nuevojuego = True
         continue
 
-#Esta funcion con la ayuda de la libreria random, y el randint toma un valor entre 0 y la longitud
-# de la lista diccionario -1 para despues regresar la palabra sacandola por el valor obtenido de la lista
-def PalabraAlAzar(diccionario):
-    palabraOculta = rdn.randint(0, len(diccionario) - 1)
-    return diccionario[palabraOculta]
 #La funcion actualiza que numero en la lista de dibujos va a llamar depende de cuantos erorres lleve el usuario
 def DiseñoAhorcado():
     print(dibujos[len(letrasIncorrectas)],"\n")
@@ -156,7 +150,7 @@ def LetraRepetida():
 #pero si era la ultima letra por descubir y la acertaste, imprime que fue la ultima.
 def Comprobar():
     if len(letrasIncorrectas) < 6:
-        if letra in palabra:
+        if letra in palabraAleatoria:
             print("\n \n \n \n Perfecto le atinaste a una!\n")
         elif Victoria() == True:
             print("\n \n \n \n Perfecto, le atinaste a la ultima")
@@ -167,19 +161,19 @@ def Comprobar():
 # si el elemento de la lista de la palabra con indice "i" es igual a la letra del usuario, 
 # entonces en la lista "casillas" va a ser remplazado por la letra del usuario.
 def ActualizarCasillas():
-    for i in range(len(palabra)):
-        if palabra[i] == letra:
+    for i in range(len(palabraAleatoria)):
+        if palabraAleatoria[i] == letra:
             casillas[i] = letra
 #Comprueba si ya no quedan guiones bajos en la lista casillas porque ya todos fueron cambiados por letras
 def Victoria():
     if " _" not in casillas:
         print("Felicidades ", nombre,"!!! Descubriste la palabra por completo, que listo que sos")
-        print("La palabra era", palabra)
+        print("La palabra era", palabraAleatoria)
         return True
 #Si la lista de letras incorrectas alcanza 6 elementos en ella, quiere decir que perdiste
 def Perder():
     if len(letrasIncorrectas) == 6:
-        print("F en el chat ¡Lo siento", nombre,"! ¡Has perdido! la palabra a adivinar era: " ,palabra)
+        print("F en el chat ¡Lo siento", nombre,"! ¡Has perdido! la palabra a adivinar era: " ,palabraAleatoria)
         return True
 #Ingresamos esta funcion para usarla en el bucle del juego para que, cuando pierdas no se cierre tan abruptamente el programa.
 def TableroFinal():
@@ -188,9 +182,9 @@ def TableroFinal():
         print(*casillas)
 
 #-------------------------------------------------------------------------
-palabra = PalabraAlAzar(diccionario)
+
 #La lista casillas van a ser tantos guiones como la cantidad de letras de la palabra
-casillas = [ " _" ]*len(palabra)
+casillas = [ " _" ]*len(palabraAleatoria)
 letrasIncorrectas = []
 
 confirmacion = True
