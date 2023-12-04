@@ -129,6 +129,8 @@ while True:
         if len(letrasIncorrectas) < 6:
             print(*casillas)
             print("\n Letras incorrectas que llevas: ", *letrasIncorrectas)
+            print("Intentos totales: 6")
+            print("Intentos fallidos: ",len(letrasIncorrectas))
     def LetraValida():
         if letra in "abcdefghijklmnñopqrstuvxyzw" and len(letra) == 1:
             return True
