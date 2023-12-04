@@ -134,7 +134,7 @@ def LetraValida():
         print("\n \n \n \n ingresa solo una letra a la vez")
         return False
     elif letra not in "abcdefghijklmnñopqrstuvxyzw":
-        print("\n \n \n \n Solamente se aceptan letras del abedecario, Prueba otra vez")
+        print("\n \n \n \n Solamente se aceptan letras del abedecario")
         return False
 #Esta funcion es para ver si la letra ingrsada ya fue ingresada previamente
 def LetraRepetida():
