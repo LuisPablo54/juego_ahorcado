@@ -5,6 +5,7 @@
 #Rodrigo Mendoza Rodriguez
 #Luis Pablo López Iracheta
 
+#Githup del proyecto: https://github.com/LuisPablo54/juego_ahorcado
 
 #Aqui importamos la libreria random para una funcion de alatoriedad que usaremos adelante
 import random as rdn
@@ -106,7 +107,7 @@ while True:
             
         elif dificultad == "facil":
             print("\nVienes a relajarte, adivina el color \n")
-            with open("C:/IBERO/juego_ahorcado/BancoDePalabrasFacil.txt","r") as archivo:
+            with open("C:/IBERO/Iracheta_Mendoza/BancoDePalabrasFacil.txt","r") as archivo:
                 lineas = archivo.readlines()
                 palabras = [palabra.strip() for linea in lineas for palabra in linea.split()]
                 palabraAleatoria = rdn.choice(palabras).strip()
@@ -236,4 +237,6 @@ while True:
     elif respuesta == "si" or "sí":
         
         print("Continuando el juego...")
+
+        
    
